@@ -33,15 +33,15 @@ class BilbyFitter:
                     minimum=np.log10(pd.lower), 
                     maximum=np.log10(pd.upper), 
                     name=log_name,
-                    latex_label=f"$\\log_{{10}}({pd.latex or pd.name})$" # 让角图的标签更美观
+                    latex_label=f"$\\log_{{10}} {pd.latex or pd.name}$" # 让角图的标签更美观
                 )
             elif pd.scale is Scale.LINEAR:
                 priors[pd.name] = bilby.core.prior.Uniform(
-                    minimum=pd.lower, maximum=pd.upper, name=pd.name, latex_label=f"$({pd.latex or pd.name})$"
+                    minimum=pd.lower, maximum=pd.upper, name=pd.name, latex_label=f"${pd.latex or pd.name}$"
                 )
             elif pd.scale is Scale.FIXED:
                 val = 0.5 * (pd.lower + pd.upper)
-                priors[pd.name] = bilby.core.prior.DeltaFunction(peak=val, name=pd.name)
+                priors[pd.name] = bilby.core.prior.DeltaFunction(peak=val, name=pd.name, latex_label=f"${pd.latex or pd.name}$")
 
         return priors
 
