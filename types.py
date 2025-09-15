@@ -32,3 +32,4 @@ class ParamDef:
     lower:  float    # 参数下界
     upper:  float    # 参数上界
     scale:  Scale = Scale.LINEAR
+    latex:  Optional[str] = None  # 用于绘图的 LaTeX 标签
